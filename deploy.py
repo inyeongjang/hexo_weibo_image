@@ -33,7 +33,7 @@ for i in os.listdir(base_dir + '/_posts'):
                     img_str = img_group.groups(i + 1)[0].strip()
                     if str(img_str).startswith('/img'):
                         print img_str
-                        m2 = hashlib.md5()
+                        m2 = hashlib.sha256()  # Changed from hashlib.md5() to hashlib.sha256()
                         m2.update(open(base_dir + img_str).read())
                         image_md5 = m2.hexdigest()
                         print image_md5
@@ -61,8 +61,3 @@ os.chdir("source/_posts")
 print "注意下面的图片是否正确:"
 os.system("ls | xargs cat| grep img ")
 print 'done'
-
-
-
-
-
